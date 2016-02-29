@@ -96,7 +96,6 @@ void	swapstack(t_stack *this)
 		this->list->value = this->list->next->value;
 		this->list->next->value = tmp;
 	}
-	ft_printf("\nswap");
 }
 
 void	pushstack(t_stack *dst, t_stack *src)
@@ -119,7 +118,6 @@ void	pushstack(t_stack *dst, t_stack *src)
 		}
 		addstack(dst, tmp);
 	}
-	ft_printf("\npush");
 }
 
 void	rotatestack(t_stack *this)

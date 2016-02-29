@@ -1,6 +1,7 @@
 SRCS = main.c \
 	   t_ps.c \
 	   t_stack.c \
+	   algo.c \
 	   t_dnode.c
 
 NAME = push_swap

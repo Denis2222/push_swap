@@ -36,4 +36,21 @@ void				revrotatestack(t_stack *this);
 int					gvn(t_dnode *node);
 void				viewps(t_ps *this);
 
+void	sa(t_ps *this);
+void	sb(t_ps *this);
+void	ss(t_ps *this);
+
+void	pa(t_ps *this);
+void	pb(t_ps *this);
+
+void	ra(t_ps *this);
+void	rb(t_ps *this);
+void	rr(t_ps *this);
+
+void	rra(t_ps *this);
+void	rrb(t_ps *this);
+void	rrr(t_ps *this);
+
+void	algoboeuf(t_ps *ps);
+
 #endif

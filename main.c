@@ -16,30 +16,18 @@ int	main(int ac, char **av)
 		while (i < ac)
 		{
 			addstackback(ps->stacka, ft_atoi(av[i]));
-			//ft_printf("push %d in stacka\n", ft_atoi(av[i]));
 			i++;
 		}
-
-		viewps(ps);
-		swapstack(ps->stacka);
-		viewps(ps);
-		pushstack(ps->stackb, ps->stacka);
-		pushstack(ps->stackb, ps->stacka);
-		pushstack(ps->stackb, ps->stacka);
-		viewps(ps);
-		rotatestack(ps->stacka);
-		rotatestack(ps->stackb);
-		viewps(ps);
-		revrotatestack(ps->stacka);
-		revrotatestack(ps->stackb);
-		viewps(ps);
-		swapstack(ps->stacka);
-		viewps(ps);
-		pushstack(ps->stacka, ps->stackb);
-		pushstack(ps->stacka, ps->stackb);
-		pushstack(ps->stacka, ps->stackb);
+	
+		while (stacklen(ps->stacka) > 1)
+		{
+			algoboeuf(ps);
+		}
+		while (stacklen(ps->stackb) > 0)
+		{
+			pa(ps);
+		}
 		viewps(ps);
 	}
-
 	return (0);
 }
