@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/02 11:36:32 by dmoureu-          #+#    #+#             */
+/*   Updated: 2016/03/02 13:15:51 by dmoureu-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -19,13 +31,16 @@ typedef struct		s_push_swap
 {
 	t_stack			*stacka;
 	t_stack			*stackb;
+	t_stack			*stacko;
 }					t_ps;
 
 t_ps				*newps(void);
 t_stack				*newstack(void);
 t_dnode				*newdnode(int value);
+int					checkinput(char *av, t_stack *stack);
 void				addstack(t_stack *this, int value);
 void				addstackback(t_stack *this, int value);
+void				addstackopti(t_stack *this, int value);
 void				viewstack(t_stack *this);
 void				viewpile(t_stack *this);
 int					stacklen(t_stack *this);
@@ -51,6 +66,7 @@ void	rra(t_ps *this);
 void	rrb(t_ps *this);
 void	rrr(t_ps *this);
 
-void	algoboeuf(t_ps *ps);
+void	algonaif(t_ps *ps);
+void	algonaifresolve(t_ps *ps);
 
 #endif

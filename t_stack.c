@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   t_stack.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/02 12:56:05 by dmoureu-          #+#    #+#             */
+/*   Updated: 2016/03/02 17:46:03 by dmoureu-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_stack	*newstack(void)
@@ -42,6 +54,34 @@ void	addstackback(t_stack *this, int value)
 	}
 }
 
+void	addstackopti(t_stack *this, int value)
+{
+	t_dnode	*current;
+//	t_dnode	*tmp;
+	int		add;
+
+	if (this->list)
+		current = this->list;
+	add = 0;
+	if (!this->list || current->value > value)
+	{
+		printf("newlist s : [%d]", value);
+		addstack(this, value);
+		add++;
+	}
+	else
+	{
+		while (current->next && !add)
+		{
+			printf("current w : [%d]", current->value);
+			current = current->next;
+		}
+		if (current->value > value && !add)
+		{
+			printf("current e: [%d]", current->value);
+		}
+	}
+}
 
 void	viewstack(t_stack *this)
 {
@@ -50,7 +90,7 @@ void	viewstack(t_stack *this)
 	current = this->list;
 	while (current)
 	{
-		ft_printf("%d {green}prev:%d next%d {eoc}\n", current->value, gvn(current->prev), gvn(current->next));
+		ft_printf(" %d {green} prev: %d next: %d {eoc}\n", current->value, gvn(current->prev), gvn(current->next));
 		current = current->next;
 	}
 }
@@ -150,7 +190,6 @@ void	revrotatestack(t_stack *this)
 		last = this->list;
 		while (last->next)
 			last = last->next;
-
 		last->prev->next = NULL;
 		first->prev = last;
 		last->prev = NULL;

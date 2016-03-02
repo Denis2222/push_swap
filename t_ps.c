@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   t_ps.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/02 12:55:55 by dmoureu-          #+#    #+#             */
+/*   Updated: 2016/03/02 16:53:29 by dmoureu-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_ps *newps(void)
@@ -7,6 +19,7 @@ t_ps *newps(void)
 	this = (t_ps*)malloc(sizeof(t_ps));
 	this->stacka = NULL;
 	this->stackb = NULL;
+	this->stacko = NULL;
 	return (this);
 }
 
@@ -16,6 +29,8 @@ void	viewps(t_ps *this)
 	viewpile(this->stacka);
 	ft_printf("\npile b:");
 	viewpile(this->stackb);
+	ft_printf("\npile o:");
+	viewpile(this->stacko);
 }
 
 void	sa(t_ps *this)
