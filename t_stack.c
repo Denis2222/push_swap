@@ -18,6 +18,7 @@ t_stack	*newstack(void)
 
 	this = (t_stack*)malloc(sizeof(t_stack));
 	this->list = NULL;
+	this->start = NULL;
 	return (this);
 }
 
@@ -27,12 +28,17 @@ void	addstack(t_stack *this, int value)
 
 	new = newdnode(value);
 	if (!this->list)
+	{
 		this->list = new;
+		this->start = new;
+	}
 	else
 	{
 		new->next = this->list;
 		this->list->prev = new;
 		this->list = new;
+		if (new->value > this->start->value)
+			this->start = new;
 	}
 }
 
@@ -43,21 +49,29 @@ void	addstackback(t_stack *this, int value)
 
 	new = newdnode(value);
 	if (!this->list)
+	{
 		this->list = new;
+		this->start = new;
+	}
 	else
 	{
+		if (new->value > this->start->value)
+			this->start = new;
 		current = this->list;
 		while (current->next)
 			current = current->next;
 		new->prev = current;
 		current->next = new;
+
 	}
 }
 
 void	addstackopti(t_stack *this, int value)
 {
 	t_dnode	*current;
-//	t_dnode	*tmp;
+	t_dnode	*prev;
+	t_dnode	*next;
+	t_dnode	*new;
 	int		add;
 
 	if (this->list)
@@ -65,20 +79,29 @@ void	addstackopti(t_stack *this, int value)
 	add = 0;
 	if (!this->list || current->value > value)
 	{
-		printf("newlist s : [%d]", value);
 		addstack(this, value);
 		add++;
 	}
 	else
 	{
-		while (current->next && !add)
+		while (current->next && !add && current->value < value)
 		{
-			printf("current w : [%d]", current->value);
 			current = current->next;
 		}
 		if (current->value > value && !add)
 		{
-			printf("current e: [%d]", current->value);
+			prev = current->prev;
+			next = current;
+			new = newdnode(value);
+			
+			prev->next = new;
+			new->prev = prev;
+			new->next = next;
+			next->prev = new;
+		}
+		else
+		{
+			addstackback(this, value);
 		}
 	}
 }
@@ -106,7 +129,10 @@ void	viewpile(t_stack *this)
 		current = current->next;
 	while (current)
 	{
-		ft_printf("%d ", current->value);
+		if (this->start && current->value == this->start->value)
+			ft_printf("{red}%d {eoc}", current->value);
+		else
+			ft_printf("%d ", current->value);
 		current = current->prev;
 	}
 }
@@ -195,5 +221,21 @@ void	revrotatestack(t_stack *this)
 		last->prev = NULL;
 		this->list = last;
 		this->list->next = first;
+	}
+}
+
+void	analysediff(t_stack *a, t_stack *b)
+{
+	t_dnode *na;
+	t_dnode *nb;
+
+	na = a->list;
+	nb = b->list;
+	while (na)
+	{
+		if (na->next->value != nb->value)
+			ft_printf("%d not in place", na->value);
+		na = na->next;
+		nb = nb->next;
 	}
 }

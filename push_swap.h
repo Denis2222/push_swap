@@ -24,6 +24,7 @@ typedef struct	s_dnode
 
 typedef struct		s_stack
 {
+	t_dnode			*start;
 	t_dnode			*list;
 }					t_stack;
 
@@ -68,5 +69,11 @@ void	rrr(t_ps *this);
 
 void	algonaif(t_ps *ps);
 void	algonaifresolve(t_ps *ps);
+
+void	algobubble(t_ps *ps);
+
+int		stackorder(t_stack *stack);
+void	resolveinline(t_stack *stack);
+void	analysediff(t_stack *a, t_stack *b);
 
 #endif

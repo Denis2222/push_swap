@@ -20,7 +20,7 @@ void	errornodigit(char *str)
 
 void	errordoublevalue(int nb)
 {
-	ft_printf("{red}{bold}Double value detected {inv}BOLD{eoc} %d ", nb);
+	ft_printf("{red}{bold}Double value detected {inv} %d {eoc}", nb);
 	exit(EXIT_FAILURE);
 }
 

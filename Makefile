@@ -1,7 +1,9 @@
 SRCS = main.c \
 	   t_ps.c \
 	   t_stack.c \
+	   t_stack_info.c \
 	   algonaif.c \
+	   algobubble.c \
 	   checkinput.c \
 	   t_dnode.c
 

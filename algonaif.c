@@ -15,7 +15,7 @@
 
 void	algonaif(t_ps *ps)
 {
-	while (stacklen(ps->stacka) > 1)
+	while (stacklen(ps->stacka) > 1 && stackorder(ps->stacka))
 	{
 		algonaifresolve(ps);
 	}
@@ -25,32 +25,40 @@ void	algonaif(t_ps *ps)
 	}
 }
 
-void	algonaifresolve(t_ps *ps)
+int		posminstack(t_stack *stack)
 {
-	int		maxa;
-	int		pos;
-	int		posmax;
-	int		rotate;
+	int	posmin;
+	int	min;
 	t_dnode	*c;
+	int		pos;
 
-	maxa = INT_MAX;
 	pos = 0;
-	rotate = 0;
-	posmax = 0;
-	c = ps->stacka->list;
+	c = stack->list;
+	min = INT_MAX;
+	posmin = 0;
 	while (c)
 	{
 		pos++;
-		if (c->value < maxa)
+		if (c->value < min)
 		{
-			posmax = pos;
-			maxa = c->value;
+			posmin = pos;
+			min = c->value;
 		}
 		c = c->next;
 	}
-	if (posmax > stacklen(ps->stacka) / 2)
+	return (posmin);
+}
+
+void	algonaifresolve(t_ps *ps)
+{
+	int		posmin;
+	int		rotate;
+
+	rotate = 0;
+	posmin = posminstack(ps->stacka);
+	if (posmin > stacklen(ps->stacka) / 2)
 	{
-		rotate = (stacklen(ps->stacka) - posmax) + 1;
+		rotate = (stacklen(ps->stacka) - posmin) + 1;
 		while (rotate > 0)
 		{
 			rra(ps);
@@ -59,7 +67,7 @@ void	algonaifresolve(t_ps *ps)
 	}
 	else
 	{
-		rotate = posmax - 1;
+		rotate = posmin - 1;
 		while (rotate > 0)
 		{
 			ra(ps);

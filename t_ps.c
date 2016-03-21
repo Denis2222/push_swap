@@ -31,6 +31,7 @@ void	viewps(t_ps *this)
 	viewpile(this->stackb);
 	ft_printf("\npile o:");
 	viewpile(this->stacko);
+	ft_printf("\n");
 }
 
 void	sa(t_ps *this)
@@ -101,4 +102,3 @@ void	rrr(t_ps *this)
 	revrotatestack(this->stacka);
 	revrotatestack(this->stackb);
 }
-
