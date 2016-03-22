@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_dnode.c                                          :+:      :+:    :+:   */
+/*   t_psa.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/02 12:56:01 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/03/21 13:14:10 by dmoureu-         ###   ########.fr       */
+/*   Created: 2016/03/22 00:09:26 by dmoureu-          #+#    #+#             */
+/*   Updated: 2016/03/22 01:01:16 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_dnode	*newdnode(int value)
+t_psa *newpsa(Action action)
 {
-	t_dnode *this;
+	t_psa	*this;
 
-	this = (t_dnode*)malloc(sizeof(t_dnode));
-	this->value = value;
+	this = (t_psa*)malloc(sizeof(t_psa));
+	this->type = action;
 	this->next = NULL;
-	this->prev = NULL;
 	return (this);
-}
-
-
-int	gvn(t_dnode *node)
-{
-	if (node)
-		return (node->value);
-	else
-		return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 12:56:05 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/03/02 17:46:03 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/03/21 13:22:30 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	addstackback(t_stack *this, int value)
 			current = current->next;
 		new->prev = current;
 		current->next = new;
-
 	}
 }
 
@@ -85,15 +84,12 @@ void	addstackopti(t_stack *this, int value)
 	else
 	{
 		while (current->next && !add && current->value < value)
-		{
 			current = current->next;
-		}
 		if (current->value > value && !add)
 		{
 			prev = current->prev;
 			next = current;
 			new = newdnode(value);
-			
 			prev->next = new;
 			new->prev = prev;
 			new->next = next;

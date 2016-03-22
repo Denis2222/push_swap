@@ -1,14 +1,17 @@
 SRCS = main.c \
 	   t_ps.c \
+	   t_psa.c \
 	   t_stack.c \
 	   t_stack_info.c \
 	   algonaif.c \
 	   algobubble.c \
+	   algoradix.c \
+	   algot.c \
 	   checkinput.c \
 	   t_dnode.c
 
 NAME = push_swap
-GCC_FLAGS = -Wall -Werror -Wextra -g
+GCC_FLAGS = -Wall -Werror -Wextra -Ofast -march=native
 CC = gcc $(GCC_FLAGS)
 SRCDIR = ./
 OBJDIR = ./objs
