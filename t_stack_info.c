@@ -76,12 +76,12 @@ int		maxvalue(t_stack *stack)
 	t_dnode	*current;
 
 	max = INT_MIN;
-	current = stack->start;
+	current = stack->list;
 	while (current)
 	{
 		if (current->value > max)
 			max = current->value;
-		current = current->prev;
+		current = current->next;
 	}
 	return (max);
 }

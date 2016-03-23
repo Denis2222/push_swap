@@ -6,7 +6,7 @@
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:36:32 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/03/22 00:57:11 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/03/23 22:43:28 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct		s_push_swap
 
 	int				verbose;
 	int				algo;
+	int				graphique;
 }					t_ps;
 
 t_ps				*newps(void);
@@ -67,6 +68,7 @@ void				viewaction(t_ps *ps);
 t_stack				*newstack(void);
 t_dnode				*newdnode(int value);
 int					checkinput(char *av, t_stack *stack);
+int					checkparam(t_ps *ps, int ac, char **av);
 void				addstack(t_stack *this, int value);
 void				addstackback(t_stack *this, int value);
 void				addstackopti(t_stack *this, int value);
@@ -104,6 +106,7 @@ void	algonaif(t_ps *ps);
 void	algonaifresolve(t_ps *ps);
 void	algobubble(t_ps *ps);
 void	algoradix(t_ps *ps);
+void	algoinsert(t_ps *ps);
 int		getbitval(int n, int bit);
 void	algot(t_ps *ps);
 

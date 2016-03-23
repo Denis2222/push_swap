@@ -6,7 +6,7 @@
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 12:55:55 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/03/22 01:40:09 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/03/23 22:49:42 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_ps *newps(void)
 	this->action = NULL;
 	this->verbose = 0;
 	this->algo = 0;
+	this->graphique = 0;
 	return (this);
 }
 
@@ -57,24 +58,32 @@ void	viewaction(t_ps *ps)
 {
 	t_psa	*psa;
 	int		nb;
-
+	char	*out;
 	nb = 0;
+	psa = ps->action;
+	while (psa)
+	{
+		nb++;
+		psa = psa->next;
+	}
+	out = (char*)malloc(sizeof(char) * ((nb * 4) + 1));
+	ft_memset(out, '\0', ((nb * 4) + 1));
 	if (!ps->verbose)
 	{
 		psa = ps->action;
 		while (psa)
 		{
-			nb++;
-			ft_printf("%s", actiontostr(psa->type));
+			ft_strcat(out, actiontostr(psa->type));
 			psa = psa->next;
 			if (psa)
-				ft_printf(" ");
+				ft_strcat(out, " ");
 			else
-				ft_printf("\n");
+				ft_strcat(out, "\n");
 		}
-		if (ps->verbose)
-			ft_printf("coups:[%d]", nb);
+		ft_putstr(out);
 	}
+	if (ps->verbose)
+		ft_printf("coups:[%d]", nb);
 }
 
 void	actionps(t_ps *ps, Action type)
@@ -94,11 +103,14 @@ void	actionps(t_ps *ps, Action type)
 	{
 		ps->action = newpsa(type);
 	}
+	if (ps->graphique)
+		viewps(ps);
 }
 
 void	viewps(t_ps *this)
 {
-	ft_printf("\npile a:");
+	ft_printf("\n============\n");
+	ft_printf("pile a:");
 	viewpile(this->stacka);
 	ft_printf("\npile b:");
 	viewpile(this->stackb);
@@ -111,8 +123,8 @@ void	sa(t_ps *this)
 {
 	if (stacklen(this->stacka) > 1)
 	{
-		actionps(this, SA);
 		swapstack(this->stacka);
+		actionps(this, SA);
 	}
 }
 
@@ -120,24 +132,24 @@ void	sb(t_ps *this)
 {
 	if (stacklen(this->stackb) > 1)
 	{
-		actionps(this, SB);
 		swapstack(this->stackb);
+		actionps(this, SB);
 	}
 }
 
 void	ss(t_ps *this)
 {
-	actionps(this, SS);
 	swapstack(this->stacka);
 	swapstack(this->stackb);
+	actionps(this, SS);
 }
 
 void	pa(t_ps *this)
 {
 	if (stacklen(this->stackb) > 0)
 	{
-		actionps(this, PA);
 		pushstack(this->stacka, this->stackb);
+		actionps(this, PA);
 	}
 }
 
@@ -145,8 +157,8 @@ void	pb(t_ps *this)
 {
 	if (stacklen(this->stacka) > 0)
 	{
-		actionps(this, PB);
 		pushstack(this->stackb, this->stacka);
+		actionps(this, PB);
 	}
 }
 
@@ -154,8 +166,8 @@ void	ra(t_ps *this)
 {
 	if (stacklen(this->stacka) > 1)
 	{
-		actionps(this, RA);
 		rotatestack(this->stacka);
+		actionps(this, RA);
 	}
 }
 
@@ -163,24 +175,24 @@ void	rb(t_ps *this)
 {
 	if (stacklen(this->stackb) > 1)
 	{
-		actionps(this, RB);
 		rotatestack(this->stackb);
+		actionps(this, RB);
 	}
 }
 
 void	rr(t_ps *this)
 {
-	actionps(this, RR);
 	rotatestack(this->stacka);
 	rotatestack(this->stackb);
+	actionps(this, RR);
 }
 
 void	rra(t_ps *this)
 {
 	if (stacklen(this->stacka) > 1)
 	{
-		actionps(this, RRA);
 		revrotatestack(this->stacka);
+		actionps(this, RRA);
 	}
 }
 
@@ -188,14 +200,14 @@ void	rrb(t_ps *this)
 {
 	if (stacklen(this->stackb) > 1)
 	{
-		actionps(this, RRB);
 		revrotatestack(this->stackb);
+		actionps(this, RRB);
 	}
 }
 
 void	rrr(t_ps *this)
 {
-	actionps(this, RRR);
 	revrotatestack(this->stacka);
 	revrotatestack(this->stackb);
+	actionps(this, RRR);
 }

@@ -6,7 +6,7 @@
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:33:16 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/03/02 12:56:14 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/03/23 20:42:07 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	algonaif(t_ps *ps)
 {
 	while (stacklen(ps->stacka) > 1 && stackorder(ps->stacka))
 	{
+		//viewps(ps);
 		algonaifresolve(ps);
 	}
 	while (stacklen(ps->stackb) > 0)
@@ -56,7 +57,7 @@ void	algonaifresolve(t_ps *ps)
 
 	rotate = 0;
 	posmin = posminstack(ps->stacka);
-	if (posmin > stacklen(ps->stacka) / 2)
+	if (posmin > stacklen(ps->stacka) / 2 + 1)
 	{
 		rotate = (stacklen(ps->stacka) - posmin) + 1;
 		while (rotate > 0)
@@ -74,5 +75,6 @@ void	algonaifresolve(t_ps *ps)
 			rotate--;
 		}
 	}
-	pb(ps);
+	if (stackorder(ps->stacka))
+		pb(ps);
 }

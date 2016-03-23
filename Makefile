@@ -7,7 +7,9 @@ SRCS = main.c \
 	   algobubble.c \
 	   algoradix.c \
 	   algot.c \
+	   algoinsert.c \
 	   checkinput.c \
+	   param.c \
 	   t_dnode.c
 
 NAME = push_swap

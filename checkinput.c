@@ -6,7 +6,7 @@
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:37:02 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/03/02 17:14:55 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/03/23 18:27:06 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		checkinput(char *av, t_stack *stack)
 	in = av;
 	while (*in)
 	{
-		if (!isdigit(*in) && *in != '-')
+		if (!isdigit(*in) && *in != '-' && *in != '+')
 			errornodigit(av);
 		in++;
 	}
