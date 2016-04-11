@@ -1,0 +1,27 @@
+50 arguments took 0.0115047931671 seconds per test and average length = 251.0
+100 arguments took 0.028239440918 seconds per test and average length = 643.4
+150 arguments took 0.0660820007324 seconds per test and average length = 1136.4
+200 arguments took 0.13304605484 seconds per test and average length = 1695.2
+250 arguments took 0.240065002441 seconds per test and average length = 2260.6
+300 arguments took 0.420568609238 seconds per test and average length = 2960.6
+350 arguments took 0.684100961685 seconds per test and average length = 3645.4
+400 arguments took 1.12061181068 seconds per test and average length = 4445.4
+450 arguments took 1.75491662025 seconds per test and average length = 5300.0
+500 arguments took 2.533207798 seconds per test and average length = 6025.2
+550 arguments took 3.47107801437 seconds per test and average length = 6834.8
+600 arguments took 4.60205864906 seconds per test and average length = 7756.2
+650 arguments took 6.00600719452 seconds per test and average length = 8775.6
+700 arguments took 7.58792619705 seconds per test and average length = 9704.2
+750 arguments took 9.44382619858 seconds per test and average length = 10552.8
+800 arguments took 11.6278399944 seconds per test and average length = 11798.2
+850 arguments took 14.0402090073 seconds per test and average length = 12705.4
+900 arguments took 16.992280674 seconds per test and average length = 14105.4
+950 arguments took 20.0019665718 seconds per test and average length = 14862.4
+1000 arguments took 23.6126139641 seconds per test and average length = 16258.2
+1050 arguments took 27.462016964 seconds per test and average length = 17443.6
+1100 arguments took 31.6629283905 seconds per test and average length = 18335.6
+1150 arguments took 36.4168898106 seconds per test and average length = 19538.8
+1200 arguments took 41.6196186543 seconds per test and average length = 20870.4
+1250 arguments took 47.4225700378 seconds per test and average length = 22060.8
+1300 arguments took 53.5435606003 seconds per test and average length = 23466.4
+

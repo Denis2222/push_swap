@@ -13,7 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libftprintf/ft_printf.h"
+# include "libft/libft.h"
 
 typedef enum Action Action;
 enum Action
@@ -105,10 +105,8 @@ void	rrr(t_ps *this);
 void	algonaif(t_ps *ps);
 void	algonaifresolve(t_ps *ps);
 void	algobubble(t_ps *ps);
-void	algoradix(t_ps *ps);
-void	algoinsert(t_ps *ps);
 int		getbitval(int n, int bit);
-void	algot(t_ps *ps);
+void	algom(t_ps *ps);
 
 int		stackorder(t_stack *stack);
 void	resolveinline(t_stack *stack);

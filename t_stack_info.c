@@ -19,14 +19,11 @@ int	stackorder(t_stack *stack)
 
 void	resolveinline(t_stack *stack)
 {
-	int	order;
 	int	way;
 
 	way = 1;
-	order = 0;
 	while (stackorder(stack) > 0)
 	{
-		order = stackorder(stack);
 		if (stack->list->value > stack->list->next->value && stack->list->value != stack->start->value)
 			swapstack(stack);
 		else

@@ -35,7 +35,7 @@ int	main(int ac, char **av)
 		}
 		if (ps->verbose)
 			viewps(ps);
-		algobubble(ps);
+		algom(ps);
 		if (ps->verbose)
 			viewps(ps);
 		viewaction(ps);
