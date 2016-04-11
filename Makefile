@@ -5,10 +5,7 @@ SRCS = main.c \
 	   t_stack_info.c \
 	   algonaif.c \
 	   algobubble.c \
-	   algoradix.c \
 	   algom.c \
-	   algot.c \
-	   algoinsert.c \
 	   checkinput.c \
 	   param.c \
 	   t_dnode.c

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:36:32 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/03/23 22:43:28 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/11 06:04:27 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct		s_push_swap
 t_ps				*newps(void);
 t_psa				*newpsa(Action action);
 void				viewaction(t_ps *ps);
+int					countaction(t_ps *ps);
 t_stack				*newstack(void);
 t_dnode				*newdnode(int value);
 int					checkinput(char *av, t_stack *stack);

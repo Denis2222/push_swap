@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algobubble.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:33:16 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/03/23 23:03:58 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/11 05:49:14 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	algobubble(t_ps *ps)
 	order = 0;
 	while (stackorder(ps->stacka) > 0)
 	{
+
 		order = stackorder(ps->stacka);
 		if (ps->stacka->list->value > ps->stacka->list->next->value &&
 			ps->stacka->list->value != ps->stacka->start->value)
@@ -68,10 +69,7 @@ void	algobubble(t_ps *ps)
 		{
 			if (ps->stacka->start == ps->stacka->list || (ps->stacka->list->next == ps->stacka->start))
 			{
-				if (way)
 					way = 0;
-				else
-					way = 1;
 			}
 			if (way)
 				rra(ps);

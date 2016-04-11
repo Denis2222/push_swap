@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_ps.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 12:55:55 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/03/23 22:49:42 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/11 06:04:02 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,21 @@ char *actiontostr(Action type)
 	if (type == 10)
 		return ("pb");
 	return ("");
+}
+
+int		countaction(t_ps *ps)
+{
+	t_psa	*psa;
+	int		nb;
+
+	nb = 0;
+	psa = ps->action;
+	while (psa)
+	{
+		nb++;
+		psa = psa->next;
+	}
+	return (nb);
 }
 
 void	viewaction(t_ps *ps)
