@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:36:32 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 08:23:29 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 08:44:42 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
+# define BUBBLE_MAX 100
 
 typedef enum Action Action;
 enum Action
@@ -57,6 +58,7 @@ typedef struct		s_push_swap
 	t_stack			*stacko;
 	t_psa			*action;
 
+	int				bad;
 	int				verbose;
 	int				algo;
 	int				graphique;
@@ -94,6 +96,8 @@ void				addstackopti(t_stack *this, int value);
 void				viewstack(t_stack *this);
 void				viewpile(t_stack *this);
 int					stacklen(t_stack *this);
+int					countformovetofirst(t_stack *stack, int n);
+int					countforpos(t_stack *stack, int n);
 void				swapstack(t_stack *this);
 void				pushstack(t_stack *dst, t_stack *src);
 void				rotatestack(t_stack *this);

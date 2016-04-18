@@ -6,11 +6,12 @@
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/22 00:09:26 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 07:34:11 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 08:46:33 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <limits.h>
 
 t_psa	*newpsa(Action action)
 {
@@ -54,6 +55,8 @@ int		countaction(t_ps *ps)
 	t_psa	*psa;
 	int		nb;
 
+	if (ps->bad)
+		return (INT_MAX);
 	nb = 0;
 	psa = ps->action;
 	while (psa)

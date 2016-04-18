@@ -6,15 +6,15 @@
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 08:09:33 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 08:23:17 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 08:31:51 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_move *newmove()
+t_move	*newmove(void)
 {
-	t_move *move;
+	t_move	*move;
 
 	move = (t_move*)malloc(sizeof(t_move));
 	move->init = 0;

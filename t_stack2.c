@@ -6,13 +6,13 @@
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 07:53:43 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 07:54:12 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 08:34:19 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	stacklen(t_stack *this)
+int		stacklen(t_stack *this)
 {
 	int		length;
 	t_dnode	*current;

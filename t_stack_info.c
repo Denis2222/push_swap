@@ -6,14 +6,14 @@
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 06:54:21 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 07:02:54 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 08:33:27 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <limits.h>
 
-int	stackorder(t_stack *stack)
+int		stackorder(t_stack *stack)
 {
 	int		order;
 	t_dnode	*current;
