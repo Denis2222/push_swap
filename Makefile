@@ -12,10 +12,11 @@ SRCS = main.c \
 	   t_dnode.c \
 	   move.c \
 	   move2.c \
-	   move3.c
+	   move3.c \
+	   t_move.c
 
 NAME = push_swap
-GCC_FLAGS = #-Wall -Werror -Wextra
+GCC_FLAGS = -g #-Wall -Werror -Wextra
 CC = gcc $(GCC_FLAGS)
 SRCDIR = ./
 OBJDIR = ./objs

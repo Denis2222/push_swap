@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:36:32 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 07:34:30 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 08:23:29 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,20 @@ typedef struct		s_push_swap
 	int				algo;
 	int				graphique;
 }					t_ps;
+
+typedef struct		s_move
+{
+	int				init;
+	int				movea;
+	int				moveb;
+	int				total;
+	int				tma;
+	int				tmb;
+	int				tem;
+}					t_move;
+
+t_move				*newmove();
+void				temptomove(t_move *m);
 
 t_ps				*newps(void);
 t_psa				*newpsa(Action action);

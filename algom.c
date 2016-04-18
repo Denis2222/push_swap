@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algom.c                                            :+:      :+:    :+:   */
+/*   newalgom.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/18 06:33:51 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 06:33:56 by dmoureu-         ###   ########.fr       */
+/*   Created: 2016/04/18 08:25:19 by dmoureu-          #+#    #+#             */
+/*   Updated: 2016/04/18 08:27:08 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,116 +97,94 @@ int		countforpos(t_stack *stack, int n)
 	}
 }
 
-void	findbestpb(t_ps *ps, int *movea, int *moveb)
+void	moovy(t_ps *ps, t_move *m)
 {
-	int		total;
-	int		tma;
-	int		tmb;
-	int		tem;
-	t_dnode	*ca;
+	if (m->movea > 0 && m->moveb > 0)
+	{
+		rr(ps);
+		(m->movea)--;
+		(m->moveb)--;
+	}
+	if (m->movea < 0 && m->moveb < 0)
+	{
+		rrr(ps);
+		(m->movea)++;
+		(m->moveb)++;
+	}
+}
 
-	total = -1;
-	tma = 0;
-	tmb = 0;
-	tem = 0;
+void	movy(t_ps *ps, t_move *m)
+{
+	if (m->movea > 0)
+	{
+		ra(ps);
+		(m->movea)--;
+	}
+	else if (m->movea < 0)
+	{
+		rra(ps);
+		(m->movea)++;
+	}
+	if (m->moveb > 0)
+	{
+		rb(ps);
+		(m->moveb)--;
+	}
+	else if (m->moveb < 0)
+	{
+		rrb(ps);
+		(m->moveb)++;
+	}
+}
+
+void	findbestpb(t_ps *ps)
+{
+	t_dnode   *ca;
+	t_move    *m;
+
+	m = newmove();
 	ca = ps->stacka->list;
 	while (ca)
 	{
-		tma = countformovetofirst(ps->stacka, ca->value);
-		tmb = countforpos(ps->stackb, ca->value);
-		if (total < 0 || (tem = 1 + ft_abs(tma) + ft_abs(tmb)) < total)
-		{
-			*movea = tma;
-			*moveb = tmb;
-			total = tem;
-		}
+		m->tma = countformovetofirst(ps->stacka, ca->value);
+		m->tmb = countforpos(ps->stackb, ca->value);
+		m->tem = 1 + ft_abs(m->tma) + ft_abs(m->tmb);
+		if (m->init == 0 || m->tem < m->total)
+			temptomove(m);
 		if (!ca->next)
-			break ;
+			break;
 		ca = ca->next;
 	}
-}
-
-void	moovy(t_ps *ps, int *movea, int *moveb)
-{
-	if (*movea > 0 && *moveb > 0)
+	while (m->movea || m->moveb)
 	{
-		rr(ps);
-		(*movea)--;
-		(*moveb)--;
-	}
-	if (*movea < 0 && *moveb < 0)
-	{
-		rrr(ps);
-		(*movea)++;
-		(*moveb)++;
-	}
-}
-
-void	movy(t_ps *ps, int *movea, int *moveb)
-{
-	if (*movea > 0)
-	{
-		ra(ps);
-		(*movea)--;
-	}
-	else if (*movea < 0)
-	{
-		rra(ps);
-		(*movea)++;
-	}
-	if (*moveb > 0)
-	{
-		rb(ps);
-		(*moveb)--;
-	}
-	else if (*moveb < 0)
-	{
-		rrb(ps);
-		(*moveb)++;
-	}
-}
-
-void	movebestpb(t_ps *ps)
-{
-	int	movea;
-	int	moveb;
-
-	movea = 0;
-	movea = 0;
-	findbestpb(ps, &movea, &moveb);
-	while (movea || moveb)
-	{
-		moovy(ps, &movea, &moveb);
-		movy(ps, &movea, &moveb);
+		moovy(ps, m);
+		movy(ps, m);
 	}
 	pb(ps);
 }
 
-void	algom(t_ps *ps)
-{
-	int	mb;
+void algom(t_ps *ps) {
+	int mb;
 
 	pb(ps);
 	while (stacklen(ps->stacka) > 0)
 	{
-		movebestpb(ps);
+		findbestpb(ps);
 	}
 	mb = countformovetofirst(ps->stackb, maxvalue(ps->stackb));
-	while (mb)
+	while(mb)
 	{
 		if (mb > 0)
 		{
 			rb(ps);
 			mb--;
 		}
-		else if (mb < 0)
+		else if(mb < 0)
 		{
 			rrb(ps);
 			mb++;
 		}
 	}
 	while (stacklen(ps->stackb) > 0)
-	{
 		pa(ps);
-	}
 }
