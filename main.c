@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:33:04 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 04:20:58 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 05:24:17 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_ps	*mainnaif(int ac, char **av)
 	}
 	if (ps->verbose)
 		viewps(ps);
+	checktwolast(ps);
 	algonaif(ps);
 	if (ps->verbose)
 		viewps(ps);
@@ -103,6 +104,8 @@ t_ps	*mainm(int ac, char **av)
 	}
 	if (ps->verbose)
 		viewps(ps);
+	
+	ft_printf("%d", lastnode(ps->stacka)->value);
 	algom(ps);
 	if (ps->verbose)
 		viewps(ps);
@@ -111,23 +114,33 @@ t_ps	*mainm(int ac, char **av)
 
 int	main(int ac, char **av)
 {
-//	t_ps	**test;
-	t_ps	*psnaif;
-	t_ps	*psbubble;
-	t_ps	*psbubblerev;
-	t_ps	*psm;
+	t_ps	**test;
+	int i;
+	int min;
+	int best;
 
-//	test = (t_ps**)malloc(sizeof(t_ps) * 10);
+	best = 0;
+	i = 0;
+	min = -1;
+	test = (t_ps**)malloc(sizeof(t_ps) * 10);
 	if (ac > 1)
 	{
-		psnaif = mainnaif(ac, av);
-		psbubble = mainbubble(ac, av);
-		psbubblerev = mainbubblerev(ac, av);
-		psm = mainm(ac, av);
-
-
-		viewaction(psm);
-		ft_printf("\nnaif:%d\nbubble:%d\nbubblerev:%d\nalgom:%d",countaction(psnaif), countaction(psbubble), countaction(psbubblerev),countaction(psm));
+		test[0] = mainm(ac, av);
+		test[1] = mainnaif(ac, av);
+		test[2] = mainbubble(ac, av);
+		test[3] = mainbubblerev(ac, av);
+		test[4] = NULL;
+		while (test[i])
+		{
+			if (min < 0 || countaction(test[i]) < best)
+			{
+				best = countaction(test[i]);
+				min = i;
+			}
+		ft_printf("%d   %d\n", countaction(test[i]), min);
+			i++;
+		}
+		viewaction(test[min]);
 	}
 	return (0);
 }

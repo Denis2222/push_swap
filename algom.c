@@ -1,57 +1,61 @@
 #include "push_swap.h"
 
-int countformovetofirst(t_stack *stack, int n)
+int countformovetofirstright(t_stack *stack, int n)
 {
     t_dnode *node;
-    t_dnode *nodelast;
-
-    int     pos;
     int     i;
-    int     len;
+    
+    i = 0;
     node = stack->list;
-    pos = 1;
-    i = 1;
-
     while (node)
     {
       if (node->value == n)
-      {
-          pos = i;
-      }
+          return (i);
       i++;
-      nodelast = node;
       node = node->next;
     }
+    return (0);
+}
 
+int countformovetofirstleft(t_stack *stack, int n)
+{
+    t_dnode *node;
+    int     i;
+
+    i = 1;
+    node = lastnode(stack);
+    while (node)
+    {
+      if (node->value == n)
+        return (i  * -1);
+      i++;
+      node = node->prev;
+    }
+    return (0);
+}
+
+int countformovetofirst(t_stack *stack, int n)
+{
+    t_dnode *node;
+    int     pos;
+    int     i;
+    int     len;
+
+    node = stack->list;
+    pos = 1;
+    i = 1;
+    while (node)
+    {
+      if (node->value == n)
+          pos = i;
+      i++;
+      node = node->next;
+    }
     len = stacklen(stack);
     if (pos <= ((len+1)/2))
-    {
-          i = 0;
-          node = stack->list;
-          while (node)
-          {
-            if (node->value == n)
-            {
-                return (i);
-            }
-            i++;
-            node = node->next;
-          }
-    }
+        return (countformovetofirstright(stack,n));
     else
-    {
-      i = 1;
-      node = nodelast;
-      while (node)
-      {
-        if (node->value == n)
-        {
-          return (i  * -1);
-        }
-        i++;
-        node = node->prev;
-      }
-    }
+        return (countformovetofirstleft(stack,n));
     return (0);
 }
 
@@ -66,25 +70,27 @@ int countforpos(t_stack *stack, int n){
   max = maxvalue(stack);
   min = minvalue(stack);
   if (n > max || n < min)
-  {
       return countformovetofirst(stack, max);
-  }
   else
   {
     nextval = min;
     while (node)
     {
       if (node->value < n && node->value > nextval)
-      {
         nextval = node->value;
-      }
       node = node->next;
     }
     return countformovetofirst(stack, nextval);
   }
 }
 
-void findbestpb(t_ps *ps) {
+void findbestpb(t_ps *ps, int *movea, int *moveb)
+{
+
+}
+
+
+void movebestpb(t_ps *ps) {
   t_dnode *ca;
   int movea;
   int moveb;
@@ -108,8 +114,6 @@ void findbestpb(t_ps *ps) {
   ca = ps->stacka->list;
   while (ca)
   {
-/*    if (counter < 5)
-    {*/
       tma = countformovetofirst(ps->stacka, ca->value);
       tmb = countforpos(ps->stackb, ca->value);
       tem = 1 + ft_abs(tma) + ft_abs(tmb);
@@ -121,40 +125,15 @@ void findbestpb(t_ps *ps) {
         moveb = tmb;
         total = tem;
       }
-      //counter++;
-    //}
     if (!ca->next)
       break;
     ca = ca->next;
   }
-/*  counter = 0;
-  while (ca)
-  {
-    if (counter < 5)
-    {
-      tma = countformovetofirst(ps->stacka, ca->value);
-      tmb = countforpos(ps->stackb, ca->value);
-      tem = 1 + ft_abs(tma) + ft_abs(tmb);
-      //ft_printf("for %d to b cout=a(%d)+b(%d)    %d\n", ca->value, tma, tmb, tem);
-      if (init == 0 || tem < total)
-      {
-        init = 1;
-        movea = tma;
-        moveb = tmb;
-        total = tem;
-      }
-      counter++;
-    }
-    ca = ca->prev;
-  }*/
 
-  //ft_printf("==========================================\nbest : a: %d b: %d   total %d \n", movea, moveb, total);
   while (movea || moveb)
   {
-
     if (movea > 0 && moveb > 0)
     {
-      //ft_printf("-------------------------------------------------\n");
       rr(ps);
       movea--;
       moveb--;
@@ -162,7 +141,6 @@ void findbestpb(t_ps *ps) {
 
     if (movea < 0 && moveb < 0)
     {
-      //ft_printf("+++++++++++++++++++++++++++++++++++++++++++++++++\n");
       rrr(ps);
       movea++;
       moveb++;
@@ -199,7 +177,7 @@ void algom(t_ps *ps) {
   pb(ps);
   while (stacklen(ps->stacka) > 0)
   {
-    findbestpb(ps);
+    movebestpb(ps);
   }
   mb = countformovetofirst(ps->stackb, maxvalue(ps->stackb));
   while(mb)

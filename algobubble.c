@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:33:16 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 04:15:25 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 04:51:52 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,22 @@ void	checktwolast(t_ps *ps)
 	t_dnode *current;
 	t_dnode *prev;
 
-	current = ps->stacka->list;
-	while (current->next)
+	if (stacklen(ps->stacka) > 4)
 	{
-		prev = current;
-		current = current->next;
-	}
-	if (prev->value > current->value)
-	{
-		rra(ps);
-		rra(ps);
-		sa(ps);
-		ra(ps);
-		ra(ps);
+		current = ps->stacka->list;
+		while (current->next)
+		{
+			prev = current;
+			current = current->next;
+		}
+		if (prev->value > current->value)
+		{
+			rra(ps);
+			rra(ps);
+			sa(ps);
+			ra(ps);
+			ra(ps);
+		}
 	}
 }
 
@@ -37,8 +40,7 @@ void	algobubble(t_ps *ps, int way)
 {
 	int	order;
 
-	if (stacklen(ps->stacka) > 4)
-		checktwolast(ps);
+	checktwolast(ps);
 	order = 0;
 	while (stackorder(ps->stacka) > 0)
 	{
