@@ -6,13 +6,13 @@
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 18:24:14 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/03/23 22:43:31 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 06:50:37 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	isparam(char c)
+int		isparam(char c)
 {
 	if (c == 'v')
 	{
@@ -29,7 +29,17 @@ int	isparam(char c)
 	return (0);
 }
 
-int	checkparam(t_ps *ps, int ac, char **av)
+void	applyparam(t_ps *ps, char c)
+{
+	if (c == 'v')
+		ps->verbose = 1;
+	if (c == 'b')
+		ps->algo = 1;
+	if (c == 'g')
+		ps->graphique = 1;
+}
+
+int		checkparam(t_ps *ps, int ac, char **av)
 {
 	int valid;
 	int	i;
@@ -44,12 +54,7 @@ int	checkparam(t_ps *ps, int ac, char **av)
 		{
 			while (isparam(av[i][a]))
 			{
-				if (av[i][a] == 'v')
-					ps->verbose = 1;
-				if (av[i][a] == 'b')
-					ps->algo = 1;
-				if (av[i][a] == 'g')
-					ps->graphique = 1;
+				applyparam(ps, av[i][a]);
 				a++;
 			}
 			if (!ft_isdigit(av[i][1]))
@@ -62,4 +67,3 @@ int	checkparam(t_ps *ps, int ac, char **av)
 	}
 	return (i);
 }
-

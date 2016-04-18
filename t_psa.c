@@ -6,13 +6,13 @@
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/22 00:09:26 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/03/22 01:01:16 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 06:51:29 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_psa *newpsa(Action action)
+t_psa	*newpsa(Action action)
 {
 	t_psa	*this;
 

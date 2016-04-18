@@ -6,13 +6,13 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 12:55:55 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/11 06:04:02 by anonymous        ###   ########.fr       */
+/*   Updated: 2016/04/18 06:52:24 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_ps *newps(void)
+t_ps	*newps(void)
 {
 	t_ps	*this;
 
@@ -27,7 +27,7 @@ t_ps *newps(void)
 	return (this);
 }
 
-char *actiontostr(Action type)
+char	*actiontostr(Action type)
 {
 	if (type == 0)
 		return ("sa");
@@ -74,6 +74,7 @@ void	viewaction(t_ps *ps)
 	t_psa	*psa;
 	int		nb;
 	char	*out;
+
 	nb = 0;
 	psa = ps->action;
 	while (psa)
@@ -129,8 +130,6 @@ void	viewps(t_ps *this)
 	viewpile(this->stacka);
 	ft_printf("\npile b:");
 	viewpile(this->stackb);
-//	ft_printf("\npile o:");
-//	viewpile(this->stacko);
 	ft_printf("\n============\n");
 }
 

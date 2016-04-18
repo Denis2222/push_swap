@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:36:32 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 05:10:16 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 06:57:36 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	checktwolast(t_ps *ps);
 int		minvalue(t_stack *stack);
 int		maxvalue(t_stack *stack);
 int		badvalue(t_stack *stack);
-void	pushvaluetob(t_ps *ps, int val);
 
 void	sa(t_ps *this);
 void	sb(t_ps *this);

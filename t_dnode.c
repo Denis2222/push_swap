@@ -6,7 +6,7 @@
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 12:56:01 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/03/21 13:14:10 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 06:48:06 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_dnode	*newdnode(int value)
 {
-	t_dnode *this;
+	t_dnode	*this;
 
 	this = (t_dnode*)malloc(sizeof(t_dnode));
 	this->value = value;
@@ -23,8 +23,7 @@ t_dnode	*newdnode(int value)
 	return (this);
 }
 
-
-int	gvn(t_dnode *node)
+int		gvn(t_dnode *node)
 {
 	if (node)
 		return (node->value);
