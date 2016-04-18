@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:36:32 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 06:58:36 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 07:34:30 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,10 @@ typedef struct		s_push_swap
 t_ps				*newps(void);
 t_psa				*newpsa(Action action);
 void				viewaction(t_ps *ps);
+char				*actiontostr(Action type);
+void				viewactionconcat(t_psa *psa, char *out);
+void				actionps(t_ps *ps, Action type);
+
 int					countaction(t_ps *ps);
 t_stack				*newstack(void);
 t_dnode				*newdnode(int value);

@@ -8,7 +8,10 @@ SRCS = main.c \
 	   algom.c \
 	   checkinput.c \
 	   param.c \
-	   t_dnode.c
+	   t_dnode.c \
+	   move.c \
+	   move2.c \
+	   move3.c
 
 NAME = push_swap
 GCC_FLAGS = #-Wall -Werror -Wextra

@@ -6,7 +6,7 @@
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 12:56:05 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 07:04:25 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 07:42:10 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,7 @@ void	revrotatestack(t_stack *this)
 		this->list->next = first;
 	}
 }
-
+/*
 void	analysediff(t_stack *a, t_stack *b)
 {
 	t_dnode *na;
@@ -199,4 +199,4 @@ void	analysediff(t_stack *a, t_stack *b)
 		na = na->next;
 		nb = nb->next;
 	}
-}
+}*/
