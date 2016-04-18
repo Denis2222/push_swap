@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:33:04 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 07:28:38 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 07:50:31 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_ps	*mainnaif(int ac, char **av)
 	}
 	if (ps->verbose)
 		viewps(ps);
-	checktwolast(ps);
 	algonaif(ps);
 	if (ps->verbose)
 		viewps(ps);
