@@ -18,7 +18,7 @@ SRCS = main.c \
 	   t_move.c
 
 NAME = push_swap
-GCC_FLAGS = -g #-Wall -Werror -Wextra
+GCC_FLAGS = -march=native -O3 -Wall -Werror -Wextra
 CC = gcc $(GCC_FLAGS)
 SRCDIR = ./
 OBJDIR = ./objs

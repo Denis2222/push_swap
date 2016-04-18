@@ -3,28 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   checkinput.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dmoureu- <dmoureu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:37:02 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/03/23 18:27:06 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 21:29:19 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	errornodigit(char *str)
+void	errornodigit(char *str, t_ps *ps)
 {
-	ft_printf("{red}{bold}No digit detected !{eoc} {green}{bold}%s{eoc}", str);
+	if (!ps->verbose)
+		ft_putstr_fd("Error\n", 2);
+	else
+		ft_printf("{red}{bold}No digit !{eoc} {green}{bold}%s{eoc}", str);
 	exit(EXIT_FAILURE);
 }
 
-void	errordoublevalue(int nb)
+void	errordoublevalue(int nb, t_ps *ps)
 {
-	ft_printf("{red}{bold}Double value detected {inv} %d {eoc}", nb);
+	if (!ps->verbose)
+		ft_putstr_fd("Error\n", 2);
+	else
+		ft_printf("{red}{bold}Double value detected {inv} %d {eoc}", nb);
 	exit(EXIT_FAILURE);
 }
 
-int		checknbstack(t_stack *stack, int nb)
+int		checknbstack(t_stack *stack, int nb, t_ps *ps)
 {
 	t_dnode *current;
 
@@ -32,13 +38,13 @@ int		checknbstack(t_stack *stack, int nb)
 	while (current)
 	{
 		if (current->value == nb)
-			errordoublevalue(nb);
+			errordoublevalue(nb, ps);
 		current = current->next;
 	}
 	return (1);
 }
 
-int		checkinput(char *av, t_stack *stack)
+int		checkinput(char *av, t_stack *stack, t_ps *ps)
 {
 	int		nb;
 	char	*in;
@@ -47,10 +53,10 @@ int		checkinput(char *av, t_stack *stack)
 	while (*in)
 	{
 		if (!isdigit(*in) && *in != '-' && *in != '+')
-			errornodigit(av);
+			errornodigit(av, ps);
 		in++;
 	}
 	nb = ft_atoi(av);
-	checknbstack(stack, nb);
+	checknbstack(stack, nb, ps);
 	return (nb);
 }

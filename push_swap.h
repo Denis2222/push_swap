@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: dmoureu- <dmoureu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:36:32 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 12:15:23 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 21:25:02 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void				actionps(t_ps *ps, enum e_action type);
 int					countaction(t_ps *ps);
 t_stack				*newstack(void);
 t_dnode				*newdnode(int value);
-int					checkinput(char *av, t_stack *stack);
+int					checkinput(char *av, t_stack *stack, t_ps *ps);
 int					checkparam(t_ps *ps, int ac, char **av);
 void				addstack(t_stack *this, int value);
 void				addstackback(t_stack *this, int value);
