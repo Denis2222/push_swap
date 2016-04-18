@@ -6,11 +6,12 @@
 /*   By: dmoureu- <dmoureu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:37:02 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 21:29:19 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/19 00:04:02 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <limits.h>
 
 void	errornodigit(char *str, t_ps *ps)
 {
@@ -46,17 +47,27 @@ int		checknbstack(t_stack *stack, int nb, t_ps *ps)
 
 int		checkinput(char *av, t_stack *stack, t_ps *ps)
 {
-	int		nb;
+	long	nb;
 	char	*in;
 
 	in = av;
 	while (*in)
 	{
 		if (!isdigit(*in) && *in != '-' && *in != '+')
+		{
 			errornodigit(av, ps);
+		}
 		in++;
 	}
 	nb = ft_atoi(av);
+	if (nb > INT_MAX || nb < INT_MIN)
+	{
+		if (!ps->verbose)
+			ft_putstr_fd("Error\n", 2);
+		else
+			ft_printf("{red}{bold}Non int detected {inv} %lld {eoc}", nb);
+		exit(EXIT_FAILURE);
+	}
 	checknbstack(stack, nb, ps);
 	return (nb);
 }
