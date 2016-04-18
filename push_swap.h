@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:36:32 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 06:57:36 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 06:58:36 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int		getbitval(int n, int bit);
 void	algom(t_ps *ps);
 
 int		stackorder(t_stack *stack);
-t_dnode *lastnode(t_stack *stack);
+t_dnode	*lastnode(t_stack *stack);
 void	resolveinline(t_stack *stack);
 void	analysediff(t_stack *a, t_stack *b);
 

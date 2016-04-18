@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 12:55:55 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 06:52:24 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 07:06:45 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,20 @@ int		countaction(t_ps *ps)
 	return (nb);
 }
 
+void	viewactionconcat(t_psa *psa, char *out)
+{
+	while (psa)
+	{
+		ft_strcat(out, actiontostr(psa->type));
+		psa = psa->next;
+		if (psa)
+			ft_strcat(out, " ");
+		else
+			ft_strcat(out, "\n");
+	}
+	ft_putstr(out);
+}
+
 void	viewaction(t_ps *ps)
 {
 	t_psa	*psa;
@@ -86,17 +100,7 @@ void	viewaction(t_ps *ps)
 	ft_memset(out, '\0', ((nb * 4) + 1));
 	if (!ps->verbose)
 	{
-		psa = ps->action;
-		while (psa)
-		{
-			ft_strcat(out, actiontostr(psa->type));
-			psa = psa->next;
-			if (psa)
-				ft_strcat(out, " ");
-			else
-				ft_strcat(out, "\n");
-		}
-		ft_putstr(out);
+		viewactionconcat(ps->action, out);
 	}
 	if (ps->verbose)
 		ft_printf("coups:[%d]", nb);

@@ -6,7 +6,7 @@
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 06:54:21 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 06:57:31 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 07:02:54 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,6 @@ int	stackorder(t_stack *stack)
 		current = current->next;
 	}
 	return (order);
-}
-
-void	resolveinline(t_stack *stack)
-{
-	int	way;
-
-	way = 1;
-	while (stackorder(stack) > 0)
-	{
-		if (stack->list->value > stack->list->next->value &&
-			stack->list->value != stack->start->value)
-			swapstack(stack);
-		else
-		{
-			if (stack->start == stack->list)
-				way = 0;
-			if (way)
-				revrotatestack(stack);
-			else
-				rotatestack(stack);
-		}
-		sleep(1);
-	}
 }
 
 int		minvalue(t_stack *stack)

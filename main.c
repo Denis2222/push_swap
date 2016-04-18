@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:33:04 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 05:24:17 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 07:24:39 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ t_ps	*mainbubble(int ac, char **av)
 	}
 	if (ps->verbose)
 		viewps(ps);
-	algobubble(ps, 0);
+	if (stacklen(ps->stacka) > 0 && stackorder(ps->stacka) != 0)
+		algobubble(ps, 0);
 	if (ps->verbose)
 		viewps(ps);
 	return (ps);
@@ -80,7 +81,8 @@ t_ps	*mainbubblerev(int ac, char **av)
 	}
 	if (ps->verbose)
 		viewps(ps);
-	algobubble(ps, 1);
+	if (stacklen(ps->stacka) > 0 && stackorder(ps->stacka) != 0)
+		algobubble(ps, 1);
 	if (ps->verbose)
 		viewps(ps);
 	return (ps);
@@ -104,9 +106,8 @@ t_ps	*mainm(int ac, char **av)
 	}
 	if (ps->verbose)
 		viewps(ps);
-	
-	ft_printf("%d", lastnode(ps->stacka)->value);
-	algom(ps);
+	if (stacklen(ps->stacka) > 0 && stackorder(ps->stacka) != 0)
+		algom(ps);
 	if (ps->verbose)
 		viewps(ps);
 	return (ps);
@@ -137,7 +138,7 @@ int	main(int ac, char **av)
 				best = countaction(test[i]);
 				min = i;
 			}
-		ft_printf("%d   %d\n", countaction(test[i]), min);
+			ft_printf("%d   %d\n", countaction(test[i]), min);
 			i++;
 		}
 		viewaction(test[min]);

@@ -6,7 +6,7 @@
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 12:56:05 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/03/21 13:22:30 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 07:04:25 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,43 +65,6 @@ void	addstackback(t_stack *this, int value)
 	}
 }
 
-void	addstackopti(t_stack *this, int value)
-{
-	t_dnode	*current;
-	t_dnode	*prev;
-	t_dnode	*next;
-	t_dnode	*new;
-	int		add;
-
-	if (this->list)
-		current = this->list;
-	add = 0;
-	if (!this->list || current->value > value)
-	{
-		addstack(this, value);
-		add++;
-	}
-	else
-	{
-		while (current->next && !add && current->value < value)
-			current = current->next;
-		if (current->value > value && !add)
-		{
-			prev = current->prev;
-			next = current;
-			new = newdnode(value);
-			prev->next = new;
-			new->prev = prev;
-			new->next = next;
-			next->prev = new;
-		}
-		else
-		{
-			addstackback(this, value);
-		}
-	}
-}
-
 void	viewstack(t_stack *this)
 {
 	t_dnode	*current;
@@ -109,7 +72,8 @@ void	viewstack(t_stack *this)
 	current = this->list;
 	while (current)
 	{
-		ft_printf(" %d {green} prev: %d next: %d {eoc}\n", current->value, gvn(current->prev), gvn(current->next));
+		ft_printf(" %d {green} prev: %d next: %d {eoc}\n",
+		current->value, gvn(current->prev), gvn(current->next));
 		current = current->next;
 	}
 }
@@ -140,7 +104,7 @@ int	stacklen(t_stack *this)
 
 	length = 0;
 	current = this->list;
-	while(current)
+	while (current)
 	{
 		length++;
 		current = current->next;
@@ -164,14 +128,15 @@ void	pushstack(t_stack *dst, t_stack *src)
 {
 	int		tmp;
 	t_dnode	*left;
+
 	if (stacklen(src) > 0)
 	{
 		left = src->list;
 		tmp = left->value;
 		if (src->list->next)
 		{
-		src->list = left->next;
-		src->list->prev = NULL;
+			src->list = left->next;
+			src->list->prev = NULL;
 		}
 		else
 		{
