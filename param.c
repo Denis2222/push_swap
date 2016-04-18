@@ -6,7 +6,7 @@
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 18:24:14 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 06:50:37 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 09:23:19 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,13 @@
 int		isparam(char c)
 {
 	if (c == 'v')
-	{
 		return (1);
-	}
 	if (c == 'b')
-	{
 		return (1);
-	}
 	if (c == 'g')
-	{
 		return (1);
-	}
+	if (c == 'r')
+		return (1);
 	return (0);
 }
 
@@ -37,6 +33,8 @@ void	applyparam(t_ps *ps, char c)
 		ps->algo = 1;
 	if (c == 'g')
 		ps->graphique = 1;
+	if (c == 'r')
+		ps->result = 1;
 }
 
 int		checkparam(t_ps *ps, int ac, char **av)

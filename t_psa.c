@@ -6,14 +6,14 @@
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/22 00:09:26 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 08:46:33 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 12:16:16 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <limits.h>
 
-t_psa	*newpsa(Action action)
+t_psa	*newpsa(enum e_action action)
 {
 	t_psa	*this;
 
@@ -23,7 +23,7 @@ t_psa	*newpsa(Action action)
 	return (this);
 }
 
-char	*actiontostr(Action type)
+char	*actiontostr(enum e_action type)
 {
 	if (type == 0)
 		return ("sa");
@@ -81,7 +81,7 @@ void	viewactionconcat(t_psa *psa, char *out)
 	ft_putstr(out);
 }
 
-void	actionps(t_ps *ps, Action type)
+void	actionps(t_ps *ps, enum e_action type)
 {
 	t_psa *psa;
 

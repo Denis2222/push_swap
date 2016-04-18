@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 12:55:55 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 08:44:54 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 09:22:40 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_ps	*newps(void)
 	this->action = NULL;
 	this->bad = 0;
 	this->verbose = 0;
+	this->result = 0;
 	this->algo = 0;
 	this->graphique = 0;
 	return (this);

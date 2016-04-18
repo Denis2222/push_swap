@@ -6,7 +6,7 @@
 /*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:33:16 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 06:47:06 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 09:17:48 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,18 @@
 
 void	algonaif(t_ps *ps)
 {
-	while (stacklen(ps->stacka) > 1 && stackorder(ps->stacka))
+	int	i;
+
+	i = 0;
+	while (stacklen(ps->stacka) > 1 && stackorder(ps->stacka) && i < NAIF_MAX)
 	{
 		algonaifresolve(ps);
+		i++;
+		if (i > NAIF_MAX - 10)
+		{
+			ps->bad = 1;
+			return ;
+		}
 	}
 	while (stacklen(ps->stackb) > 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:36:32 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 09:03:13 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 12:15:23 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include "libft/libft.h"
 # define BUBBLE_MAX 100
+# define NAIF_MAX 100
 
-typedef enum Action Action;
-enum Action
+enum				e_action
 {
 	SA,
 	SB,
@@ -32,7 +32,7 @@ enum Action
 	PB
 };
 
-typedef struct	s_dnode
+typedef struct		s_dnode
 {
 	int				value;
 	struct s_dnode	*next;
@@ -47,7 +47,7 @@ typedef struct		s_stack
 
 typedef	struct		s_psa
 {
-	Action			type;
+	enum e_action	type;
 	struct s_psa	*next;
 }					t_psa;
 
@@ -60,6 +60,7 @@ typedef struct		s_push_swap
 
 	int				bad;
 	int				verbose;
+	int				result;
 	int				algo;
 	int				graphique;
 }					t_ps;
@@ -79,11 +80,11 @@ t_move				*newmove();
 void				temptomove(t_move *m);
 
 t_ps				*newps(void);
-t_psa				*newpsa(Action action);
+t_psa				*newpsa(enum e_action action);
 void				viewaction(t_ps *ps);
-char				*actiontostr(Action type);
+char				*actiontostr(enum e_action type);
 void				viewactionconcat(t_psa *psa, char *out);
-void				actionps(t_ps *ps, Action type);
+void				actionps(t_ps *ps, enum e_action type);
 
 int					countaction(t_ps *ps);
 t_stack				*newstack(void);
@@ -105,41 +106,42 @@ void				revrotatestack(t_stack *this);
 int					gvn(t_dnode *node);
 void				viewps(t_ps *this);
 
-void	checktwolast(t_ps *ps);
-int		minvalue(t_stack *stack);
-int		maxvalue(t_stack *stack);
-int		badvalue(t_stack *stack);
+void				checktwolast(t_ps *ps);
+int					minvalue(t_stack *stack);
+int					maxvalue(t_stack *stack);
+int					badvalue(t_stack *stack);
 
-void	sa(t_ps *this);
-void	sb(t_ps *this);
-void	ss(t_ps *this);
+void				sa(t_ps *this);
+void				sb(t_ps *this);
+void				ss(t_ps *this);
 
-void	pa(t_ps *this);
-void	pb(t_ps *this);
+void				pa(t_ps *this);
+void				pb(t_ps *this);
 
-void	ra(t_ps *this);
-void	rb(t_ps *this);
-void	rr(t_ps *this);
+void				ra(t_ps *this);
+void				rb(t_ps *this);
+void				rr(t_ps *this);
 
-void	rra(t_ps *this);
-void	rrb(t_ps *this);
-void	rrr(t_ps *this);
+void				rra(t_ps *this);
+void				rrb(t_ps *this);
+void				rrr(t_ps *this);
 
-void	algonaif(t_ps *ps);
-void	algonaifresolve(t_ps *ps);
-void	algobubble(t_ps *ps, int way);
-int		getbitval(int n, int bit);
-void	algom(t_ps *ps);
+void				algonaif(t_ps *ps);
+void				algonaifresolve(t_ps *ps);
+void				algobubble(t_ps *ps, int way);
+int					getbitval(int n, int bit);
+void				algom(t_ps *ps);
 
-int		stackorder(t_stack *stack);
-t_dnode	*lastnode(t_stack *stack);
-void	resolveinline(t_stack *stack);
-void	analysediff(t_stack *a, t_stack *b);
+int					stackorder(t_stack *stack);
+t_dnode				*lastnode(t_stack *stack);
+void				resolveinline(t_stack *stack);
+void				analysediff(t_stack *a, t_stack *b);
 
-void	checkswitchrotate(t_stack *stack, char c);
-void	checkswap(t_stack *stack, char c);
-void	checkrotate(t_stack *stack, char c);
-void	checkbasic(t_stack *stack, char c);
-t_ps	**testarray(t_ps *psm, t_ps *psnaif, t_ps *psbubble, t_ps *psbubblerev);
+void				checkswitchrotate(t_stack *stack, char c);
+void				checkswap(t_stack *stack, char c);
+void				checkrotate(t_stack *stack, char c);
+void				checkbasic(t_stack *stack, char c);
+t_ps				**testarray(t_ps *psm, t_ps *psnaif,
+					t_ps *psbubble, t_ps *psbubblerev);
 
 #endif

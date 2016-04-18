@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:33:04 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 09:01:38 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 09:25:49 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,23 +119,23 @@ int		main(int ac, char **av)
 	int		best;
 
 	best = 0;
-	i = 0;
+	i = -1;
 	min = -1;
 	if (ac > 1)
 	{
 		test = testarray(mainm(ac, av), mainnaif(ac, av),
 					mainbubble(ac, av), mainbubblerev(ac, av));
-		while (test[i])
+		while (test[++i])
 		{
 			if (min < 0 || countaction(test[i]) < best)
 			{
 				best = countaction(test[i]);
 				min = i;
 			}
-			ft_printf("%d   %d\n", countaction(test[i]), min);
-			i++;
 		}
 		viewaction(test[min]);
+		if (test[min]->result)
+			ft_printf("[move:%d]\n", countaction(test[min]));
 	}
 	return (0);
 }
