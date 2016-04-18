@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:36:32 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/11 06:04:27 by anonymous        ###   ########.fr       */
+/*   Updated: 2016/04/18 03:27:21 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	rrr(t_ps *this);
 
 void	algonaif(t_ps *ps);
 void	algonaifresolve(t_ps *ps);
-void	algobubble(t_ps *ps);
+void	algobubble(t_ps *ps, int way);
 int		getbitval(int n, int bit);
 void	algom(t_ps *ps);
 

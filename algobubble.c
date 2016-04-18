@@ -6,71 +6,48 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:33:16 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/11 05:49:14 by anonymous        ###   ########.fr       */
+/*   Updated: 2016/04/18 04:15:25 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		orderbublestack(t_stack *stack)
+void	checktwolast(t_ps *ps)
 {
-	int		order;
-	int		way;
-	t_dnode	*node;
-	int		action;
+	t_dnode *current;
+	t_dnode *prev;
 
-	action = 0;
-	node = stack->list;
-	way = 1;
-	order = 0;
-	while (stackorder(stack) > 0)
+	current = ps->stacka->list;
+	while (current->next)
 	{
-		order = stackorder(stack);
-		if (node->value > node->next->value &&
-			node->value != stack->start->value)
-		{
-			swapstack(stack);
-			action++;
-		}
-		else
-		{
-			if (stack->start == stack->list)
-				way = 0;
-			if (way)
-			{
-				revrotatestack(stack);
-				action++;
-			}
-			else
-			{
-				rotatestack(stack);
-				action++;
-			}
-		}
+		prev = current;
+		current = current->next;
 	}
-	return (action);
+	if (prev->value > current->value)
+	{
+		rra(ps);
+		rra(ps);
+		sa(ps);
+		ra(ps);
+		ra(ps);
+	}
 }
 
-void	algobubble(t_ps *ps)
+void	algobubble(t_ps *ps, int way)
 {
 	int	order;
-	int	way;
 
-	way = 0;
+	if (stacklen(ps->stacka) > 4)
+		checktwolast(ps);
 	order = 0;
 	while (stackorder(ps->stacka) > 0)
 	{
-
 		order = stackorder(ps->stacka);
 		if (ps->stacka->list->value > ps->stacka->list->next->value &&
 			ps->stacka->list->value != ps->stacka->start->value)
 			sa(ps);
 		else
 		{
-			if (ps->stacka->start == ps->stacka->list || (ps->stacka->list->next == ps->stacka->start))
-			{
-					way = 0;
-			}
 			if (way)
 				rra(ps);
 			else

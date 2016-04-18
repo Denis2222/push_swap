@@ -52,6 +52,7 @@ int countformovetofirst(t_stack *stack, int n)
         node = node->prev;
       }
     }
+    return (0);
 }
 
 int countforpos(t_stack *stack, int n){
