@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:36:32 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 08:44:42 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 09:03:13 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,5 +140,6 @@ void	checkswitchrotate(t_stack *stack, char c);
 void	checkswap(t_stack *stack, char c);
 void	checkrotate(t_stack *stack, char c);
 void	checkbasic(t_stack *stack, char c);
+t_ps	**testarray(t_ps *psm, t_ps *psnaif, t_ps *psbubble, t_ps *psbubblerev);
 
 #endif

@@ -14,6 +14,7 @@ SRCS = main.c \
 	   move.c \
 	   move2.c \
 	   move3.c \
+	   test.c \
 	   t_move.c
 
 NAME = push_swap

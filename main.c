@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:33:04 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 07:50:31 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/18 09:01:38 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ t_ps	*mainm(int ac, char **av)
 	return (ps);
 }
 
-int	main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	t_ps	**test;
 	int		i;
@@ -121,14 +121,10 @@ int	main(int ac, char **av)
 	best = 0;
 	i = 0;
 	min = -1;
-	test = (t_ps**)malloc(sizeof(t_ps) * 10);
 	if (ac > 1)
 	{
-		test[0] = mainm(ac, av);
-		test[1] = mainnaif(ac, av);
-		test[2] = mainbubble(ac, av);
-		test[3] = mainbubblerev(ac, av);
-		test[4] = NULL;
+		test = testarray(mainm(ac, av), mainnaif(ac, av),
+					mainbubble(ac, av), mainbubblerev(ac, av));
 		while (test[i])
 		{
 			if (min < 0 || countaction(test[i]) < best)
