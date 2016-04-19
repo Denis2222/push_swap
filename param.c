@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   param.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dmoureu- <dmoureu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 18:24:14 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 09:23:19 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/19 02:52:53 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int		isparam(char c)
 {
 	if (c == 'v')
 		return (1);
-	if (c == 'b')
-		return (1);
 	if (c == 'g')
 		return (1);
 	if (c == 'r')
+		return (1);
+	if (c == 'a')
 		return (1);
 	return (0);
 }
@@ -29,7 +29,7 @@ void	applyparam(t_ps *ps, char c)
 {
 	if (c == 'v')
 		ps->verbose = 1;
-	if (c == 'b')
+	if (c == 'a')
 		ps->algo = 1;
 	if (c == 'g')
 		ps->graphique = 1;
