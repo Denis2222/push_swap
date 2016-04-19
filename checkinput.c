@@ -6,7 +6,7 @@
 /*   By: dmoureu- <dmoureu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:37:02 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/19 08:57:57 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/19 08:59:34 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		checknbstack(t_stack *stack, int nb, t_ps *ps)
 	return (1);
 }
 
-int	checkstrint( char *str)
+int		checkstrint(char *str)
 {
 	if (*str == '-')
 		++str;
