@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newalgom.c                                         :+:      :+:    :+:   */
+/*   algom.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmoureu- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dmoureu- <dmoureu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 08:25:19 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 08:38:11 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/19 00:54:21 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,25 +83,26 @@ void	algom(t_ps *ps)
 {
 	int	mb;
 
-	pb(ps);
-	while (stacklen(ps->stacka) > 0)
+	if (stacklen(ps->stacka) > 0 && stackorder(ps->stacka) != 0)
 	{
-		findbestpb(ps);
-	}
-	mb = countformovetofirst(ps->stackb, maxvalue(ps->stackb));
-	while (mb)
-	{
-		if (mb > 0)
+		pb(ps);
+		while (stacklen(ps->stacka) > 0)
+			findbestpb(ps);
+		mb = countformovetofirst(ps->stackb, maxvalue(ps->stackb));
+		while (mb)
 		{
-			rb(ps);
-			mb--;
+			if (mb > 0)
+			{
+				rb(ps);
+				mb--;
+			}
+			else if (mb < 0)
+			{
+				rrb(ps);
+				mb++;
+			}
 		}
-		else if (mb < 0)
-		{
-			rrb(ps);
-			mb++;
-		}
+		while (stacklen(ps->stackb) > 0)
+			pa(ps);
 	}
-	while (stacklen(ps->stackb) > 0)
-		pa(ps);
 }

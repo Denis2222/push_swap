@@ -6,7 +6,7 @@
 /*   By: dmoureu- <dmoureu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:36:32 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/18 21:25:02 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/19 02:12:52 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,8 @@ void				rrr(t_ps *this);
 
 void				algonaif(t_ps *ps);
 void				algonaifresolve(t_ps *ps);
-void				algobubble(t_ps *ps, int way);
+void				algobubble(t_ps *ps);
+void				algobubblerev(t_ps *ps);
 int					getbitval(int n, int bit);
 void				algom(t_ps *ps);
 
