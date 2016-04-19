@@ -6,7 +6,7 @@
 /*   By: dmoureu- <dmoureu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 11:33:04 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/19 03:23:48 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/19 03:40:20 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int		main(int ac, char **av)
 				algo(ac, av, algobubblerev));
 		min = comparealgo(test);
 		viewaction(test[min]);
-		if (test[min]->result && !test[min]->algo)
+		if (test[min]->result)
 			ft_printf("[move:%d]\n", countaction(test[min]));
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: dmoureu- <dmoureu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 18:24:14 by dmoureu-          #+#    #+#             */
-/*   Updated: 2016/04/19 02:52:53 by dmoureu-         ###   ########.fr       */
+/*   Updated: 2016/04/19 08:44:55 by dmoureu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,17 @@ int		checkparam(t_ps *ps, int ac, char **av)
 	valid = 1;
 	while (i < ac && valid)
 	{
-		if (av[i][0] == '-')
+		if (av[i][0] == '-' && isparam(av[i][1]))
 		{
-			while (isparam(av[i][a]))
+			while (av[i][a])
 			{
-				applyparam(ps, av[i][a]);
+				if (isparam(av[i][a]))
+					applyparam(ps, av[i][a]);
+				else
+				{
+					ft_putstr_fd("Error\n", 2);
+					exit(0);
+				}
 				a++;
 			}
 			if (!ft_isdigit(av[i][1]))
